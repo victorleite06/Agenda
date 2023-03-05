@@ -7,6 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { ModalCadastroContatoComponent } from './components/modal-cadastro-contato/modal-cadastro-contato.component';
+import { ContatoService } from './service/contato.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,16 @@ import { ModalCadastroContatoComponent } from './components/modal-cadastro-conta
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ContatoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

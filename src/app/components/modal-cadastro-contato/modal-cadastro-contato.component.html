@@ -5,20 +5,20 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="contato.nome">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Endereço</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="contato.endereco">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Telefone</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="contato.telefone">
     </mat-form-field>
 
-    <button mat-raised-button class="botao">
+    <button mat-raised-button (click)="salvar()" class="botao">
         Salvar
     </button>
 </div>

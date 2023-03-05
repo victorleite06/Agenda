@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { contato } from 'src/app/model/contato.model';
+import { Contato } from 'src/app/model/contato.model';
 import { ModalCadastroContatoComponent } from '../modal-cadastro-contato/modal-cadastro-contato.component';
+import { ContatoService } from 'src/app/service/contato.service';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +12,60 @@ import { ModalCadastroContatoComponent } from '../modal-cadastro-contato/modal-c
 export class HomeComponent implements OnInit {
 
   colunasNomes = ['acao', 'id', 'nome', 'endereco', 'telefone']
-  dataSource: contato[] = [
+  dataSource: Contato[] = [
     { id: 1, nome: 'Teste', endereco: 'Rua Timbiras', telefone: '(31) 9 8455-4635' }
   ]
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private contatoService: ContatoService
   ) { }
 
   ngOnInit(): void {
   }
 
+  buscarContatos() {
+    this.contatoService.buscarContatos().subscribe({
+      next: res => {
+        this.dataSource = res
+      }
+    })
+  }
+
   criar() {
     let dialog = this.dialog.open(ModalCadastroContatoComponent,{
-      width: '500px', height: '500px'
+      width: '500px', height: '500px', data: { contato: new Contato() }
     })
-    
+    dialog.afterClosed().subscribe({
+      next: res => {
+        if(res) {
+          this.buscarContatos()
+        }
+      }
+    })
+  }
+
+  editar(contato: Contato) {
+    let dialog = this.dialog.open(ModalCadastroContatoComponent,{
+      width: '500px', height: '500px', data: { contato: contato }
+    })
+    dialog.afterClosed().subscribe({
+      next: res => {
+        if(res) {
+          this.buscarContatos()
+        }
+      }
+    })
+  }
+
+  deletar(contato: Contato) {
+    this.contatoService.deletar(contato.id!).subscribe({
+      next: res => {
+        this.buscarContatos()
+      },
+      error: err => {
+
+      }
+    })
   }
 }

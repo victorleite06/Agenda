@@ -7,10 +7,10 @@
                 </button>
             </th>
             <td mat-cell *matCellDef="let contato" [style.width.px]="120">
-                <button mat-icon-button matTooltip="Editar">
+                <button mat-icon-button matTooltip="Editar" (click)="editar(contato)">
                     <mat-icon style="color: var(--primary)">edit</mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Deletar">
+                <button mat-icon-button matTooltip="Deletar" (click)="deletar(contato)">
                     <mat-icon style="color: red">delete</mat-icon>
                 </button>
             </td>
