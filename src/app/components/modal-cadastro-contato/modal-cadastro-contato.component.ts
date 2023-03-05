@@ -23,11 +23,9 @@ export class ModalCadastroContatoComponent implements OnInit {
   ngOnInit(): void {
     this.contato = this.data.contato ? this.data.contato : new Contato();
     (this.contato.id === undefined || this.contato.id === null) ? this.txtTitulo = 'Cadastro de Contato' : this.txtTitulo = 'Edição de Contato' 
-    console.log(this.contato)
   }
 
   salvar() {
-    console.log(this.contato)
     this.contatoService.salvar(this.contato).subscribe({
       next: res => {
         this.dialog.close(true);
