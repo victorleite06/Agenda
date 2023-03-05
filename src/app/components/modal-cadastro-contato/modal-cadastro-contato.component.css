@@ -1,0 +1,8 @@
+.botao {
+    position: relative;
+    top: 90px;
+    right: 130px;
+    width: 100px;
+    background-color: var(--primary);
+    color: #fff;
+}
