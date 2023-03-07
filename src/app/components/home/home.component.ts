@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   colunasNomes = ['acao', 'id', 'nome', 'endereco', 'telefone']
   dataSource: Contato[] = [
-    { id: 1, nome: 'Teste', endereco: 'Rua Timbiras', telefone: '(31) 9 8455-4635' }
+    { id: 1, nome: 'Teste', endereco: 'Rua Teste', telefone: '(31) 9 8455-4635' }
   ]
 
   constructor(
