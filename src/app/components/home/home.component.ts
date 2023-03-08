@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   colunasNomes = ['acao', 'id', 'nome', 'endereco', 'telefone']
   dataSource: Contato[] = [
-    { id: 1, nome: 'Teste', endereco: 'Rua Teste', telefone: 31984554635 }
+    //{ id: 1, nome: 'Teste', endereco: 'Rua Teste', telefone: 31984554635 }
   ]
 
   constructor(
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.buscarContatos()
+    this.buscarContatos()
   }
 
   buscarContatos() {
