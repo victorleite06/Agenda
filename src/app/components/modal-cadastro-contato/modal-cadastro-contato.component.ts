@@ -35,4 +35,15 @@ export class ModalCadastroContatoComponent implements OnInit {
       }
     })
   }
+
+  telefoneMask(event: any) {
+    if (event.key && (event.key >= '0' && event.key <= '9')) {
+      if (this.contato.telefone && this.contato.telefone.toString().length == 10)
+        this.contato.telefone = parseInt(this.contato.telefone.toString() + event.key);
+    }
+    if (this.contato.telefone && this.contato.telefone.toString().length <= 10) return '(00) 0000-0000'
+
+    return '(00) 00000-0000';
+
+  }
 }

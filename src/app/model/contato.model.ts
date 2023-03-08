@@ -2,5 +2,5 @@ export class Contato {
     id?: number;
     nome?: string;
     endereco?: string;
-    telefone?: string;
+    telefone?: number;
 }

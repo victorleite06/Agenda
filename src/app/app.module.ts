@@ -11,12 +11,26 @@ import { ContatoService } from './service/contato.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from "ng2-currency-mask";
+import { PhonePipe } from './pipe/phone.pipe';
+
+export const custoMaskConfig: CurrencyMaskConfig = {
+  align: 'left',
+  allowNegative: false,
+  decimal: ',',
+  precision: 2,
+  prefix: 'R$',
+  suffix: '',
+  thousands: '.'
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ModalCadastroContatoComponent
+    ModalCadastroContatoComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -25,10 +39,13 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    CurrencyMaskModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
-    ContatoService
+    ContatoService,
+    { provide: CURRENCY_MASK_CONFIG, useValue: custoMaskConfig },
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,7 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Telefone</mat-label>
-        <input matInput [(ngModel)]="contato.telefone">
+        <input matInput [(ngModel)]="contato.telefone" name="telefone" (keyup)="telefoneMask($event)" mask="{{telefoneMask(telefone.value)}}" #telefone>
     </mat-form-field>
 
     <button mat-raised-button (click)="salvar()" class="botao">
