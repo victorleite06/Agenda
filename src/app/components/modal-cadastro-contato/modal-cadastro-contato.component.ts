@@ -26,6 +26,7 @@ export class ModalCadastroContatoComponent implements OnInit {
   }
 
   salvar() {
+    this.contato.telefone = + (this.contato.telefone !== undefined ? this.contato.telefone : 0)
     this.contatoService.salvar(this.contato).subscribe({
       next: res => {
         this.dialog.close(true);

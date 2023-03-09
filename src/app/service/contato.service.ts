@@ -9,21 +9,21 @@ import { Contato } from '../model/contato.model';
 })
 export class ContatoService {
 
-  private url: string = environment.urlAPI + '/contato'
+  private url: string = environment.urlAPI
 
   constructor(
     private http: HttpClient
   ) { }
 
   buscarContatos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+    return this.http.get<any[]>(this.url + '/contato');
   }
 
   salvar(contato: Contato): Observable<any> {
-    return this.http.post<any>(this.url, contato);
+    return this.http.post<any>(this.url + '/contato', contato);
   }
 
   deletar(idContato: number): Observable<any> {
-    return this.http.get<any>(this.url + `/deletar/${idContato}`)
+    return this.http.get<any>(this.url + `/contato/deletar/${idContato}`)
   }
 }
